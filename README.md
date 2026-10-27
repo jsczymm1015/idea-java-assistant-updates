@@ -18,9 +18,16 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 
 这是自定义插件仓库，并非 JetBrains Marketplace 官方上架。访问更新源和安装包均无需登录；IDEA 需要能够访问 GitHub、raw.githubusercontent.com 及 GitHub 的下载域名。
 
-## 当前版本：0.2.1
+## 当前版本：0.2.2
 
-新增 **记住 Codex 路径与自动连接**：连接成功一次后，打开插件面板时自动连接，并恢复该项目自己的工作会话。
+新增 **周额度显示与回车发送**：
+
+- 插件顶部显示当前 Codex 账号的周额度剩余百分比，悬停可查看重置时间及其他额度桶；这是账号共享额度，不是当前项目 token 统计。
+- 连接后、操作完成后和约每分钟刷新；也可使用 **⋯ → 刷新额度**。没有有效周数据或请求失败时显示暂不可用，不显示虚假百分比。
+- **Enter 发送，macOS Command+Enter 换行**；Windows/Linux 使用 Ctrl+Enter 换行。多行粘贴保持原样，加入中文输入法确认候选时的误发送保护。
+- 额度读取不会启动模型推理；API Key 账号或旧 CLI 可能不提供周额度。
+
+继续支持 **记住 Codex 路径与自动连接**：连接成功一次后，打开插件面板时自动连接，并恢复该项目自己的工作会话。
 
 - 成功路径保存在 IDEA 应用级设置，新项目也能复用；对话、来源和需求继续按项目隔离。
 - 旧版已有工作会话的项目会尝试原路径，成功后自动迁移，无需重复填写。
@@ -47,9 +54,9 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 - Codex 需求讨论、代码建议、局部测试、注释及阶段总结由用户主动触发。
 - 本地提示无需连接 Codex；AI 功能需本机已登录的 Codex CLI。
 
-下载：[java-codex-assistant-0.2.1.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.2.1/java-codex-assistant-0.2.1.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
+下载：[java-codex-assistant-0.2.2.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.2.2/java-codex-assistant-0.2.2.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
 
-验证范围：JDK 21 构建、10 组独立检查和安装包结构/schema 校验通过。在隔离配置中启动两次真实 IDEA，使用合成 app-server 验证磁盘保存/恢复路径和项目会话、自动重连、旧配置迁移、失败不覆盖、关闭自动连接、握手中停止/销毁；协议记录确认没有自动推理或读取来源正文。原有 PSI、引用、附件和主题组件回归通过。本版未重新执行真实 Codex 模型/Agent 全循环，也未操作用户日常 IDEA 更新。Windows/Linux 和其他 IDEA 分支尚未端到端验证。
+验证范围：JDK 21 构建、13 组独立检查、安装包结构/schema 校验与包审计通过。真实 Codex 周额度接口只读联调通过，没有创建会话或启动模型。实际隔离 IDEA 中验证额度显示、刷新、失败状态、实际输入框快捷键动作、两次启动后的自动重连及原有组件回归。输入法保护使用合成事件测试，未完成人工跨平台、各中文输入法验收；未重新执行 Agent/真实模型全循环，也未操作用户日常 IDEA 更新。
 
 ## 发布约定
 
