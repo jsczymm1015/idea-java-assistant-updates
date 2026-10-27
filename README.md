@@ -18,16 +18,19 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 
 这是自定义插件仓库，并非 JetBrains Marketplace 官方上架。访问更新源和安装包均无需登录；IDEA 需要能够访问 GitHub、raw.githubusercontent.com 及 GitHub 的下载域名。
 
-## 当前版本：0.1.1
+## 当前版本：0.1.2
 
-- 输入框上方显示文件引用标签，可打开、移除和添加项目文件或附件。
+- 输入框使用紧凑图标和引用标签，随内容收缩，支持明暗主题及窄侧栏滚动。
+- 默认只引用 IDEA 当前活动文件；＋搜索项目代码引用，回形针搜索项目附件，不再弹出系统文件选择器。
+- 在输入框按 Ctrl/⌘ + V 粘贴图片，或把图片、MD 等支持的文件拖到输入框/对话区，成为附件并参与本次请求。
+- 普通文本复制/粘贴保留；移除附件不删除原始文件，粘贴图片产生的临时 PNG 会清理。
 - Java 提示依据项目的语言级别与编译目标限制。
 - Codex 需求讨论、代码建议、局部测试、注释及阶段总结由用户主动触发。
 - 本地提示无需连接 Codex；AI 功能需本机已登录的 Codex CLI。
 
-下载：[java-codex-assistant-0.1.1.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.1.1/java-codex-assistant-0.1.1.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
+下载：[java-codex-assistant-0.1.2.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.1.2/java-codex-assistant-0.1.2.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
 
-验证范围：此版本已通过构建、独立检查及 macOS ARM64 上 IDEA 2026.1.5 的隔离加载与相关交互冒烟检查；不等同于完整人工业务端到端验收。Windows/Linux 完整流程与其他 IDEA 分支尚未验证。
+验证范围：构建、8 组独立检查、原生包结构及 macOS ARM64 上 IDEA 2026.1.5 隔离加载、合成剪贴板/文件列表接入、明暗主题组件渲染已通过。系统剪贴板与真实鼠标拖拽的跨平台完整人工验收尚未完成；本次未重新调用真实模型。Windows/Linux 完整流程与其他 IDEA 分支尚未验证。
 
 ## 发布约定
 
