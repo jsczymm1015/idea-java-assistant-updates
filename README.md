@@ -18,7 +18,15 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 
 这是自定义插件仓库，并非 JetBrains Marketplace 官方上架。访问更新源和安装包均无需登录；IDEA 需要能够访问 GitHub、raw.githubusercontent.com 及 GitHub 的下载域名。
 
-## 当前版本：0.1.4
+## 当前版本：0.2.0
+
+新增 **Agent 模式**：连接 Codex 后，从输入框下拉菜单选择 Agent，输入目标并发送；也可输入 `/agent 具体目标`。
+
+- 自动在当前模块内搜索和读取文件、制定执行计划、应用多文件修改。
+- 每次修改后自动运行模块 Maven/Gradle test，根据失败结果继续修复；最多 16 步 / 4 次测试。
+- “执行”页显示过程；可以停止，结束后查看本轮差异或撤销本轮。遇到用户后续修改会拒绝覆盖。
+- Agent 不自动改构建脚本/隐藏配置、不删除文件、不运行任意命令或部署；环境缺失、无测试或验证失败会报告未完成。
+- 撤销快照仅保存当前面板最近一轮，重启后不恢复；对话模式继续通过预览确认应用修改。
 
 - 项目搜索浮层锚定输入区的＋/回形针，在按钮上方展开（空间不足时改为下方），不再居中显示在代码区。
 - 输入框使用紧凑图标和引用标签，随内容收缩，支持明暗主题及窄侧栏滚动。
@@ -31,9 +39,9 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 - Codex 需求讨论、代码建议、局部测试、注释及阶段总结由用户主动触发。
 - 本地提示无需连接 Codex；AI 功能需本机已登录的 Codex CLI。
 
-下载：[java-codex-assistant-0.1.4.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.1.4/java-codex-assistant-0.1.4.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
+下载：[java-codex-assistant-0.2.0.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.2.0/java-codex-assistant-0.2.0.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
 
-验证范围：本版构建、8 组独立检查、原生包结构，以及 macOS ARM64 / IDEA 2026.1.5 隔离真实窗口中的灰色候选/显式选择、已打开文件优先、全项目搜索与清空恢复、原生搜索框 Enter action 选择回调已通过。引用快照、合成剪贴板/文件列表接入和明暗主题组件渲染检查通过。测试不向用户前台应用注入系统按键，不等同于系统键盘、剪贴板与真实鼠标拖拽的完整人工验收；本次未重新调用真实模型或操作用户日常 IDEA 升级。Windows/Linux 完整流程与其他 IDEA 分支尚未验证。
+验证范围：JDK 21 构建、10 组独立检查和安装包结构校验通过。实际隔离 IDEA 中完成合成 Java/Maven 模块的测试失败→修复→通过、多文件撤销、冲突保护和停止检查；真实 Codex 自主查找、读取、修改并通过实际 Maven/JUnit 测试。引用、附件和模式入口界面检查通过。没有读取业务项目或私人附件；未操作用户日常 IDEA 更新。真实模型验证仅覆盖小型合成模块，Gradle Agent 全流程、Windows/Linux、跨模块与外部服务集成尚未端到端验证。IDEA 启动的测试属于本机构建，可能下载依赖。
 
 ## 发布约定
 
