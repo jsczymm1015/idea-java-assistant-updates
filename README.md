@@ -18,9 +18,15 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 
 这是自定义插件仓库，并非 JetBrains Marketplace 官方上架。访问更新源和安装包均无需登录；IDEA 需要能够访问 GitHub、raw.githubusercontent.com 及 GitHub 的下载域名。
 
-## 当前版本：0.3.0
+## 当前版本：0.3.1
 
-**无需截图即可检查当前文件的黄线，新增全项目代码 Agent。**
+**修复讨论连接失败后重复报错、长时间等待的问题。**
+
+- `/discuss` 和代码 Agent 显示经脱敏的具体错误。终止错误及时返回；连续三次可重试错误后停止该轮，有实际进度则重新计数。
+- 讨论失败时恢复原输入，保留用户随后写入的新草稿。再次主动发送可使用记忆的 Codex 路径恢复原工作会话；不会自动重复提交。
+- 修复提前到达的协议事件导致的等待问题。此补丁改善错误处理，外部网络或服务故障仍需恢复后再试。
+
+继续提供当前文件黄线检查和全项目代码 Agent：
 
 - 打开/激活文件，输入 `/review 检查当前文件的黄线`。插件自动读取整个活动文件的 IDEA 警告原文、行列和检查类型，无需圈选或选中代码。可继续查找项目相关文件并分析。
 - “问题 / 定位”页可直接刷新本地检查结果，不调用模型；双击或回车跳转。IDEA 仍在索引/分析时显示不完整，不误报为没有问题。仅读取已有缓存，不保证未打开文件或顶部文件级通知的覆盖。
@@ -33,9 +39,9 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 
 原生 Agent 需要支持动态工具实验协议的本机已登录 Codex CLI；自动连接和额度读取不调用模型。源码、私人附件及聊天记录不会发布到本仓库。
 
-下载：[java-codex-assistant-0.3.0.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.3.0/java-codex-assistant-0.3.0.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
+下载：[java-codex-assistant-0.3.1.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.3.1/java-codex-assistant-0.3.1.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
 
-验证：15 个独立测试入口、最终安装包结构/schema/内容审计、隔离 IDEA 的 Java/XML 黄线缓存读取、未保存文本、精确定位及原有界面回归通过。真实 Codex 在合成项目完成代码及 pom.xml 修改、javac/java 验证成功、下载官方技术文档。原生 IDEA 和真实模型分别联调；未完成跨平台人工整体验收、业务项目测试或用户日常 IDEA 更新。兼容范围维持 261.*。
+本次验证：18 个独立测试入口、最终安装包结构/schema/内容审计通过；隔离 IDEA 面板验证失败停止、输入恢复、新草稿保留和原会话恢复，两次重启验证路径记忆及自动连接。真实 Codex 的合成图片提问和恢复会话后的继续讨论成功。IDEA 面板的故障注入与真实模型分别验证；未完成跨平台人工整体验收、业务项目测试或用户日常 IDEA 更新，也未重跑代码 Agent 的完整构建/联网流程。兼容范围维持 261.*。
 
 ## 发布约定
 
