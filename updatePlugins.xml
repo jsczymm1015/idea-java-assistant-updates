@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugins>
-  <plugin id="dev.jsc.idea.java-codex-assistant" url="https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.4.0/java-codex-assistant-0.4.0.zip" version="0.4.0">
+  <plugin id="dev.jsc.idea.java-codex-assistant" url="https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.4.1/java-codex-assistant-0.4.1.zip" version="0.4.1">
     <idea-version since-build="261" until-build="261.*" />
   </plugin>
 </plugins>

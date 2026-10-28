@@ -18,15 +18,15 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 
 这是自定义插件仓库，并非 JetBrains Marketplace 官方上架。访问更新源和安装包均无需登录；IDEA 需要能够访问 GitHub、raw.githubusercontent.com 及 GitHub 的下载域名。
 
-## 当前版本：0.4.0
+## 当前版本：0.4.1
 
-**输入框底部新增模型、推理强度和速度选择。**
+**回复改为流式显示，速度切换改为闪电图标。**
 
-- 连接 Codex 后显示当前账号实际可用模型；推理强度与速度按所选模型提供的选项联动。
-- 可切换标准 / 快速速度；快速档悬停显示服务端提供的速度与用量说明，实际可用性和消耗取决于模型及账号。
-- 用户选择按项目保存，重启连接后恢复；下一次主动发送时生效，运行中保持该轮选择。
-- 对话、检查、全项目 Agent 和旧模块 Agent 使用相同选择；不修改全局 Codex 配置。模型列表可在更多菜单刷新，失效的已保存模型需重新选择。
-- 保留连接错误提示、连续失败中止、失败输入恢复与主动重连功能。
+- 对话正文边接收边显示，结束后更新同一回复块，不再重复追加；结构化计划和代码变更仍等待完整结果后审阅。
+- 检查与代码 Agent 的回答在对话和执行页同步流式显示，终端输出保留在执行页。停止或失败后保留已收到的文字并标记未完成。
+- 输入框底部仅保留一个闪电速度按钮：空心为标准、实心为快速。模型不支持快速时禁用；悬停显示当前状态及服务端速度/用量说明。
+- 模型和推理强度仍可下拉选择，选择按项目保存、重启连接后恢复；运行中锁定当前轮参数，不修改全局 Codex 配置。
+- 保留错误提示、失败输入恢复和主动重连功能；首段等待仍取决于模型与网络。
 
 继续提供当前文件黄线检查和全项目代码 Agent：
 
@@ -41,9 +41,9 @@ https://raw.githubusercontent.com/jsczymm1015/idea-java-assistant-updates/main/u
 
 原生 Agent 需要支持动态工具实验协议的本机已登录 Codex CLI；自动连接和额度读取不调用模型。源码、私人附件及聊天记录不会发布到本仓库。
 
-下载：[java-codex-assistant-0.4.0.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.4.0/java-codex-assistant-0.4.0.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
+下载：[java-codex-assistant-0.4.1.zip](https://github.com/jsczymm1015/idea-java-assistant-updates/releases/download/java-codex-assistant-v0.4.1/java-codex-assistant-0.4.1.zip)。校验值见 [checksums.sha256](checksums.sha256)。ZIP 不需解压。
 
-本次验证：21 个独立测试入口、最终安装包结构/schema/内容审计通过。隔离 IDEA 验证生产界面选择实际传入对话、检查和 Agent，两次启动验证模型、强度和速度设置持久化；明暗主题及 320/440 宽度布局已检查。真实 Codex 接受合成消息中的指定模型/强度、快速档与切回标准档，原生客户端标准速度请求也成功。未测量速度倍率或计费差异，未逐个调用全部模型组合，也未完成业务项目、跨平台人工全流程或用户日常 IDEA 升级。兼容范围保持 261.*。
+本次验证：24 个独立测试入口、最终安装包结构/schema/内容审计通过。隔离 IDEA 在服务尚未完成时确认首段可见，覆盖对话、检查与 Agent、最终去重、失败保留和闪电切换；两次启动验证设置恢复。真实 Codex 普通/原生客户端分别收到多次公开正文增量并正常结束。明暗主题及 320/440 宽度已目视检查。未完成业务项目、跨平台人工全流程或用户日常 IDEA 升级，未测量速度倍率或计费差异。兼容范围保持 261.*。
 
 ## 发布约定
 
